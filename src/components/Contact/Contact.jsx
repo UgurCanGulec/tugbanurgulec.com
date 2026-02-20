@@ -75,7 +75,7 @@ const Contact = () => {
             userEmail: formData.email,
             commentText: formData.comment,
             // Bu linke basınca onaylama işlemini yapacağımız sayfaya gidecek
-            approvalLink: `https://tugbanurgulec.com/approve?id=${generatedId}`
+            approvalLink: `https://tugbanurguleccom.netlify.app/approve?id=${generatedId}`
           };
 
           await emailjs.send(
