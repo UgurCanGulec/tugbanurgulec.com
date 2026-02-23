@@ -8,7 +8,7 @@ const Header = () => {
   const [stickyMenu, setStickyMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-  
+
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
@@ -37,6 +37,13 @@ const Header = () => {
     setMobileServicesOpen(false);
   };
 
+  const scrollToDestination = (destination) => {
+    const contactSection = document.getElementById(destination);
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   const brandColor = "#a61d4d";
   const iconMargin = { marginRight: '12px' };
   const navItemClass = `xl tc wf yf font-black transition-all duration-300 ${stickyMenu ? 'text-slate-900 hover:text-[#a61d4d]' : 'text-slate-800 hover:text-[#a61d4d]'}`;
@@ -53,9 +60,9 @@ const Header = () => {
         style={{ padding: '8px 0', transition: 'all 0.3s ease', zIndex: 1000 }}
       >
         <div className="bb ze ki xn 2xl:ud-px-0 oo wf yf i" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          
+
           {/* LOGO BÖLÜMÜ */}
-          <div style={{ flex: '0 0 auto', minWidth: 'max-content' }}>
+          <div onClick={() => scrollToDestination('hero')} style={{ flex: '0 0 auto', minWidth: 'max-content' }}>
             <Link to="/" className="tc wf yf group" style={{ gap: '15px', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <div style={{
                 width: '60px', height: '60px', borderRadius: '50%',
@@ -75,17 +82,17 @@ const Header = () => {
 
           {/* SAĞ TARAF: NAVİGASYON */}
           <div className="tc wf yf" style={{ flex: '0 1 auto', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-            
+
             {!isMobile && (
               <nav className="hidden lg:block">
                 <ul className="tc _o sf yo cg ep" style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
                   <li>
-                    <Link to="/" className={navItemClass} style={{ textDecoration: 'none' }}>
+                    <Link onClick={() => scrollToDestination('hero')} to="/" className={navItemClass} style={{ textDecoration: 'none' }}>
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={brandColor} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={iconMargin}><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
                       <span>Ana Sayfa</span>
                     </Link>
                   </li>
-                  
+
                   <li className="c i relative group">
                     <button className={navItemClass} onClick={() => setDropdown(!dropdown)} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={brandColor} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={iconMargin}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
@@ -100,13 +107,13 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <Link to="/about" className={navItemClass} style={{ textDecoration: 'none' }}>
+                    <Link onClick={() => scrollToDestination('about')} to="/about" className={navItemClass} style={{ textDecoration: 'none' }}>
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={brandColor} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={iconMargin}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
                       <span>Hakkımızda</span>
                     </Link>
                   </li>
                   <li>
-                    <Link to="/gallery" className={navItemClass} style={{ textDecoration: 'none' }}>
+                    <Link onClick={() => scrollToDestination('gallery')} to="/gallery" className={navItemClass} style={{ textDecoration: 'none' }}>
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={brandColor} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={iconMargin}><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg>
                       <span>Galeri</span>
                     </Link>
@@ -117,10 +124,10 @@ const Header = () => {
 
             {!isMobile && (
               <div className="tc wf ig pb no hidden lg:flex">
-                <a href="https://wa.me/905364926842" className="transition-all duration-300 shadow-md" 
-                   style={{ padding: '12px 28px', marginLeft: '30px', borderRadius: '50px', fontSize: '15px', fontWeight: 'bold', border: `2px solid ${brandColor}`, backgroundColor: brandColor, color: '#fff', textDecoration: 'none' }}
-                   onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = brandColor; }}
-                   onMouseOut={(e) => { e.currentTarget.style.backgroundColor = brandColor; e.currentTarget.style.color = '#fff'; }}>
+                <a href="https://wa.me/905364926842" className="transition-all duration-300 shadow-md"
+                  style={{ padding: '12px 28px', marginLeft: '30px', borderRadius: '50px', fontSize: '15px', fontWeight: 'bold', border: `2px solid ${brandColor}`, backgroundColor: brandColor, color: '#fff', textDecoration: 'none' }}
+                  onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = brandColor; }}
+                  onMouseOut={(e) => { e.currentTarget.style.backgroundColor = brandColor; e.currentTarget.style.color = '#fff'; }}>
                   Randevu Al
                 </a>
               </div>
@@ -143,7 +150,10 @@ const Header = () => {
           display: (isMobile && mobileMenuOpen) ? 'flex' : 'none', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px',
           padding: '20px', overflowY: 'auto'
         }}>
-          <Link to="/" onClick={() => setMobileMenuOpen(false)} style={mobileLinkStyle}>
+          <Link to="/" onClick={() => {
+            scrollToDestination('hero')
+            setMobileMenuOpen(false)
+          }} style={mobileLinkStyle}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={brandColor} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={iconMargin}><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
             Ana Sayfa
           </Link>
@@ -169,14 +179,14 @@ const Header = () => {
           </Link>
 
           {/* MOBİL RANDEVU AL BUTONU - Hover efekti eklendi */}
-          <a href="https://wa.me/905364926842" 
-             style={{ 
-               backgroundColor: brandColor, color: '#fff', padding: '15px 40px', 
-               borderRadius: '50px', fontWeight: 'bold', textDecoration: 'none', 
-               marginTop: '10px', transition: 'all 0.3s ease', border: `2px solid ${brandColor}` 
-             }}
-             onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = brandColor; }}
-             onMouseOut={(e) => { e.currentTarget.style.backgroundColor = brandColor; e.currentTarget.style.color = '#fff'; }}
+          <a href="https://wa.me/905364926842"
+            style={{
+              backgroundColor: brandColor, color: '#fff', padding: '15px 40px',
+              borderRadius: '50px', fontWeight: 'bold', textDecoration: 'none',
+              marginTop: '10px', transition: 'all 0.3s ease', border: `2px solid ${brandColor}`
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = brandColor; }}
+            onMouseOut={(e) => { e.currentTarget.style.backgroundColor = brandColor; e.currentTarget.style.color = '#fff'; }}
           >
             Randevu Al
           </a>

@@ -23,6 +23,7 @@ const About = () => {
 
     return (
         <section
+            id='about'
             style={{
                 position: 'relative',
                 paddingTop: '160px',

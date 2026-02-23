@@ -40,13 +40,15 @@ const Gallery = () => {
   };
 
   return (
-    <section style={{
-      position: 'relative',
-      padding: '120px 0 150px 0',
-      backgroundColor: '#fdfdfd',
-      zIndex: 1,
-      overflow: 'hidden'
-    }}>
+    <section
+      id='gallery'
+      style={{
+        position: 'relative',
+        padding: '120px 0 150px 0',
+        backgroundColor: '#fdfdfd',
+        zIndex: 1,
+        overflow: 'hidden'
+      }}>
 
       {/* --- ARKA PLAN EFEKTLERİ --- */}
       <div style={{ position: 'absolute', inset: 0, zIndex: -1, pointerEvents: 'none' }}>
