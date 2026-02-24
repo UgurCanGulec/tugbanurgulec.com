@@ -128,7 +128,7 @@ const Testimonials = () => {
                         ))}
                     </Swiper>
                 ) : (
-                    <div className="text-center text-gray-500 py-10">Henüz onaylanmış bir yorum bulunmuyor.</div>
+                    <div className="text-center text-gray-500 py-10"/>
                 )}
             </div>
 

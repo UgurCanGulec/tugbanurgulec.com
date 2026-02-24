@@ -61,7 +61,6 @@ const Header = () => {
       >
         <div className="bb ze ki xn 2xl:ud-px-0 oo wf yf i" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
-          {/* LOGO BÖLÜMÜ */}
           <div onClick={() => scrollToDestination('hero')} style={{ flex: '0 0 auto', minWidth: 'max-content' }}>
             <Link to="/" className="tc wf yf group" style={{ gap: '15px', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <div style={{
